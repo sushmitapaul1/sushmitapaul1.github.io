@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spatial transcriptomics: a map of what cells are doing inside a tumour</title>
+<meta name="description" content="A plain-language guide to spatial transcriptomics and why it matters for understanding cancer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Source+Serif+4:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .fig-label{font:600 13px "Inter",system-ui,sans-serif;fill:currentColor}
+  .fig-small{font:12px "Inter",system-ui,sans-serif;fill:var(--muted)}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+<a class="back" href="../">&larr; All topics</a>
+
+<h1>Spatial transcriptomics: a map of what cells are doing</h1>
+<p class="lead">Imagine you could look at a slice of a tumour and see not just which cells are there, but what each one is busy doing and who its neighbours are. That is what spatial transcriptomics does.</p>
+
+<div class="takeaways">
+  <h2>Key points</h2>
+  <ul>
+    <li>Almost every cell in your body carries the same DNA. What makes cells different is <em>which</em> genes they switch on.</li>
+    <li>Spatial transcriptomics measures which genes are switched on <strong>and</strong> keeps track of <strong>where</strong> in the tissue that is happening.</li>
+    <li>A tumour is not just a lump of identical cancer cells. It is a crowded neighbourhood of many cell types, and location matters.</li>
+    <li>This is mostly a research tool today. It helps scientists understand cancer better, which may lead to better treatments in the future.</li>
+  </ul>
+</div>
+
+<h2>Starting with genes and "messages"</h2>
+<p>Your body is made of trillions of <strong>cells</strong>, the tiny living units that everything is built from. Nearly every cell holds a full copy of your <strong>DNA</strong>, the long instruction book for building and running a body.</p>
+<p>The DNA is split into sections called <strong>genes</strong>. Each gene is roughly one recipe, often for making a <strong>protein</strong> (the molecules that do most of the work in a cell).</p>
+<p>A skin cell and a brain cell have the same instruction book, but they read different pages. When a cell "uses" a gene, it makes a short working copy of that recipe out of a molecule called <strong>RNA</strong>. Scientists call this copy a <strong>transcript</strong>, and the act of switching a gene on is called <strong>gene expression</strong>.</p>
+<p>So if you can count the RNA copies inside a cell, you get a good clue about what that cell is doing right now.</p>
+
+<h2>What does "spatial transcriptomics" actually mean?</h2>
+<p>Let's break the name apart:</p>
+<ul>
+  <li><strong>Transcriptome</strong>: all the RNA transcripts in a cell or a piece of tissue at a given moment. It is like a list of every recipe currently being cooked.</li>
+  <li><strong>Transcriptomics</strong>: the science of measuring that list, usually for thousands of genes at once.</li>
+  <li><strong>Spatial</strong>: to do with space, or location.</li>
+</ul>
+<p>Put together, <strong>spatial transcriptomics</strong> means measuring which genes are active <em>and</em> recording exactly where in the tissue each measurement came from. The result is a kind of map.</p>
+
+<div class="analogy">
+  <p><strong>Analogy: the fruit smoothie and the fruit bowl.</strong></p>
+  <p>Older methods often worked by grinding up a piece of tissue and measuring everything at once. That is like putting a bowl of fruit in a blender: you can taste that there is banana and strawberry in the smoothie, but you can no longer tell where each piece of fruit was, or whether the strawberries were all in one corner.</p>
+  <p>Newer "single-cell" methods are like taking the fruit out and sorting it into piles. Now you know exactly how many strawberries there were, but you've lost the arrangement in the bowl.</p>
+  <p>Spatial transcriptomics is like taking a photo of the bowl first and then labelling every piece of fruit right where it sits. You keep both the <em>what</em> and the <em>where</em>.</p>
+</div>
+
+<figure>
+  <svg viewBox="0 0 720 260" role="img" aria-labelledby="f1t f1d">
+    <title id="f1t">Three ways to study a piece of tissue</title>
+    <desc id="f1d">Left: all cells blended into a single average colour. Middle: cells sorted into separate piles by type, with their positions lost. Right: cells shown in their original positions, like a map.</desc>
+
+    <!-- Panel 1: blended -->
+    <g transform="translate(20,20)">
+      <text class="fig-label" x="100" y="14" text-anchor="middle">1. Blend it</text>
+      <path d="M55 50 h90 l-12 120 h-66 z" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M62 95 h76 l-7 72 h-62 z" fill="var(--accent)" opacity=".45"/>
+      <text class="fig-small" x="100" y="200" text-anchor="middle">One average for</text>
+      <text class="fig-small" x="100" y="216" text-anchor="middle">the whole sample</text>
+    </g>
+
+    <!-- Panel 2: sorted -->
+    <g transform="translate(260,20)">
+      <text class="fig-label" x="100" y="14" text-anchor="middle">2. Sort the cells</text>
+      <g fill="var(--accent)">
+        <circle cx="40" cy="70" r="10"/><circle cx="40" cy="95" r="10"/><circle cx="40" cy="120" r="10"/><circle cx="40" cy="145" r="10"/><circle cx="40" cy="170" r="10"/>
+      </g>
+      <g fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="100" cy="95" r="10"/><circle cx="100" cy="120" r="10"/><circle cx="100" cy="145" r="10"/><circle cx="100" cy="170" r="10"/>
+      </g>
+      <g fill="var(--muted)">
+        <circle cx="160" cy="145" r="10"/><circle cx="160" cy="170" r="10"/>
+      </g>
+      <text class="fig-small" x="100" y="200" text-anchor="middle">Counts each cell type,</text>
+      <text class="fig-small" x="100" y="216" text-anchor="middle">but loses positions</text>
+    </g>
+
+    <!-- Panel 3: map -->
+    <g transform="translate(500,20)">
+      <text class="fig-label" x="100" y="14" text-anchor="middle">3. Keep the map</text>
+      <rect x="20" y="40" width="160" height="140" rx="12" fill="none" stroke="currentColor" stroke-width="2"/>
+      <g fill="var(--accent)">
+        <circle cx="50" cy="70" r="10"/><circle cx="75" cy="70" r="10"/><circle cx="50" cy="95" r="10"/><circle cx="75" cy="95" r="10"/><circle cx="62" cy="120" r="10"/>
+      </g>
+      <g fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="110" cy="75" r="10"/><circle cx="135" cy="90" r="10"/><circle cx="110" cy="110" r="10"/><circle cx="150" cy="120" r="10"/>
+      </g>
+      <g fill="var(--muted)">
+        <circle cx="70" cy="155" r="10"/><circle cx="130" cy="155" r="10"/>
+      </g>
+      <text class="fig-small" x="100" y="200" text-anchor="middle">Knows what each cell</text>
+      <text class="fig-small" x="100" y="216" text-anchor="middle">is doing, and where</text>
+    </g>
+  </svg>
+  <figcaption>Three ways to study tissue. The shapes stand for different kinds of cells. Only the spatial approach (right) keeps track of who sits next to whom.</figcaption>
+</figure>
+
+<h2>How does it work, roughly?</h2>
+<p>There are several different techniques, and new ones keep appearing, but most start the same way: a very thin slice of tissue, thinner than a sheet of paper, is placed on a glass slide, much like the slides doctors already look at under a microscope.</p>
+<p>After that, there are two broad families of approach:</p>
+<ul>
+  <li><strong>Catch and read.</strong> The slide is covered in a grid of tiny spots. Each spot carries its own unique chemical "address tag", called a <strong>barcode</strong>. RNA from the tissue sticks to the spot underneath it and picks up that spot's barcode. The RNA is then read by a machine (a process called <strong>sequencing</strong>), and the barcode tells the computer which spot, and so which location, each piece of RNA came from.</li>
+  <li><strong>Light it up.</strong> Scientists add small glowing probes designed to stick to the RNA from particular genes. Using a powerful microscope, they photograph the tissue over several rounds and work out which gene each glowing dot belongs to, right where it sits in the cell.</li>
+</ul>
+<p>Either way, a computer then turns the enormous amount of data into a map showing where each gene is switched on. These maps can be laid over an ordinary microscope image of the same tissue, so scientists can compare the gene activity with what the cells look like.</p>
+<p>The different methods involve trade-offs. Some can measure many thousands of genes but see less fine detail; others can see individual cells or even single RNA molecules but measure a smaller, pre-chosen set of genes.</p>
+
+<h2>Why a tumour is more like a city than a lump</h2>
+<p><strong>Cancer</strong> is a disease in which some of the body's cells grow out of control and can spread. It is easy to picture a tumour as a ball made entirely of cancer cells, but that is not the full story.</p>
+<p>A tumour also contains immune cells (the body's defenders), blood vessels that bring in food and oxygen, and "support" cells that form the tissue's scaffolding. Scientists call this whole surrounding community the <strong>tumour microenvironment</strong>.</p>
+<p>The cancer cells themselves are not all the same, either. Different parts of the same tumour can behave differently. Scientists call this variety <strong>heterogeneity</strong> (from Greek words meaning "different kinds").</p>
+<p>Because the cells are constantly signalling to their neighbours, <em>where</em> a cell sits can change what it does. That is exactly the kind of information that gets lost when tissue is blended up, and exactly what spatial transcriptomics is designed to keep.</p>
+
+<figure>
+  <svg viewBox="0 0 720 300" role="img" aria-labelledby="f2t f2d">
+    <title id="f2t">A simplified map of a tumour slice</title>
+    <desc id="f2d">An oval tumour with a core of cancer cells. Immune cells are gathered around the outer edge and have not moved into the centre. Blood vessels run through part of the tissue.</desc>
+
+    <!-- surrounding healthy tissue -->
+    <rect x="10" y="10" width="700" height="280" rx="16" fill="none" stroke="var(--line)" stroke-width="2"/>
+    <!-- tumour -->
+    <ellipse cx="330" cy="150" rx="200" ry="110" fill="var(--accent)" opacity=".18"/>
+    <ellipse cx="330" cy="150" rx="200" ry="110" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="6 5"/>
+    <!-- cancer cells in core -->
+    <g fill="var(--accent)">
+      <circle cx="260" cy="120" r="9"/><circle cx="290" cy="140" r="9"/><circle cx="320" cy="115" r="9"/>
+      <circle cx="350" cy="150" r="9"/><circle cx="380" cy="125" r="9"/><circle cx="310" cy="175" r="9"/>
+      <circle cx="270" cy="170" r="9"/><circle cx="345" cy="190" r="9"/><circle cx="400" cy="165" r="9"/>
+      <circle cx="235" cy="145" r="9"/><circle cx="420" cy="140" r="9"/><circle cx="370" cy="95" r="9"/>
+    </g>
+    <!-- immune cells at edge -->
+    <g fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="140" cy="130" r="7"/><circle cx="150" cy="175" r="7"/><circle cx="180" cy="70" r="7"/>
+      <circle cx="200" cy="235" r="7"/><circle cx="260" cy="40" r="7"/><circle cx="330" cy="30" r="7"/>
+      <circle cx="420" cy="45" r="7"/><circle cx="500" cy="80" r="7"/><circle cx="530" cy="140" r="7"/>
+      <circle cx="505" cy="215" r="7"/><circle cx="420" cy="258" r="7"/><circle cx="320" cy="268" r="7"/>
+    </g>
+    <!-- blood vessel -->
+    <path d="M600 20 C 560 110, 470 160, 450 280" fill="none" stroke="var(--muted)" stroke-width="6" stroke-linecap="round" opacity=".7"/>
+
+    <!-- legend -->
+    <g transform="translate(575,190)">
+      <circle cx="8" cy="0" r="7" fill="var(--accent)"/>
+      <text class="fig-small" x="22" y="4">cancer cells</text>
+      <circle cx="8" cy="24" r="6" fill="none" stroke="currentColor" stroke-width="2"/>
+      <text class="fig-small" x="22" y="28">immune cells</text>
+      <line x1="0" y1="48" x2="16" y2="48" stroke="var(--muted)" stroke-width="5" stroke-linecap="round" opacity=".7"/>
+      <text class="fig-small" x="22" y="52">blood vessel</text>
+    </g>
+  </svg>
+  <figcaption>A made-up example, not real data. Here the immune cells have gathered around the tumour's edge but have not got into the middle. A blended sample would say "there are immune cells here" &ndash; a spatial map shows they are in the wrong place to help.</figcaption>
+</figure>
+
+<h2>Why this matters for cancer</h2>
+<p>Here are some of the questions scientists hope spatial maps can help answer:</p>
+<ul>
+  <li><strong>Are the body's defenders reaching the cancer?</strong> Some cancer treatments, such as <strong>immunotherapy</strong> (medicines that help the immune system attack cancer), depend on immune cells getting close to cancer cells. A map can show whether they are mixed in with the cancer, stuck at the edge, or missing altogether.</li>
+  <li><strong>Which parts of a tumour are most dangerous?</strong> Some regions of a tumour may be growing faster, spreading into nearby tissue, or behaving in ways that could make them harder to treat. Seeing these regions on a map can help researchers study them.</li>
+  <li><strong>How do cells "talk" to their neighbours?</strong> By seeing which genes are active in cells that sit side by side, scientists can make better guesses about the signals passing between them.</li>
+  <li><strong>Why does a treatment work for one person but not another?</strong> Comparing maps from different patients could, over time, help explain these differences and suggest new targets for medicines.</li>
+</ul>
+<p>Large research projects are already using these tools. For example, the US National Cancer Institute funds the <strong>Human Tumor Atlas Network</strong>, which aims to build detailed maps of human cancers, from early changes all the way to advanced disease.</p>
+
+<h2>What it can't do (yet)</h2>
+<p>It is worth being clear about the limits:</p>
+<ul>
+  <li><strong>It is mainly used in research.</strong> Spatial transcriptomics is not yet a routine test that most patients would get when they are diagnosed. Researchers are still working out how, and whether, it can best be used in everyday care.</li>
+  <li><strong>It is expensive and complicated.</strong> The equipment, chemicals and computing power are costly, and making sense of the data takes specialist skills.</li>
+  <li><strong>It shows a single moment in a thin slice.</strong> A tumour is three-dimensional and changes over time, while one slide is a flat snapshot. Stacking many slices is possible but takes a lot of extra work.</li>
+  <li><strong>RNA is only part of the story.</strong> A gene being switched on is a strong clue, but it doesn't always tell you exactly how much of the final protein a cell makes.</li>
+</ul>
+<p>Even so, the field has grown quickly. The scientific journal <em>Nature Methods</em> named spatially resolved transcriptomics its "Method of the Year" for 2020, a sign of how important researchers think it could be.</p>
+
+<h2>The big picture</h2>
+<p>For a long time, scientists could either see what cells looked like and where they were, or measure what genes they were using, but it was hard to do both at once. Spatial transcriptomics brings those two views together.</p>
+<p>For cancer, that means studying a tumour less like a bag of ingredients and more like a living neighbourhood, where who lives next to whom really matters. It won't cure cancer on its own, but better maps help scientists ask better questions.</p>
+
+<h2>Glossary</h2>
+<dl class="glossary">
+  <dt>Cell</dt>
+  <dd>The smallest living unit of the body. You are made of trillions of them.</dd>
+  <dt>DNA</dt>
+  <dd>The molecule that stores the body's full set of instructions, found in nearly every cell.</dd>
+  <dt>Gene</dt>
+  <dd>A section of DNA that holds the instructions for one job, often for making a particular protein.</dd>
+  <dt>Protein</dt>
+  <dd>A molecule that does work in the cell, such as building structures, sending signals or speeding up chemical reactions.</dd>
+  <dt>RNA / transcript</dt>
+  <dd>A working copy of a gene's instructions that a cell makes when it uses that gene.</dd>
+  <dt>Gene expression</dt>
+  <dd>A gene being switched on and used by a cell.</dd>
+  <dt>Transcriptome</dt>
+  <dd>All the RNA transcripts in a cell or tissue at one moment: a snapshot of which genes are in use.</dd>
+  <dt>Barcode</dt>
+  <dd>A short, unique chemical tag used to label where a piece of RNA came from.</dd>
+  <dt>Sequencing</dt>
+  <dd>Using a machine to read the exact order of the chemical "letters" in DNA or RNA.</dd>
+  <dt>Tumour microenvironment</dt>
+  <dd>Everything around the cancer cells in a tumour, including immune cells, blood vessels and support cells.</dd>
+  <dt>Heterogeneity</dt>
+  <dd>Variety: the fact that different cells or regions within a tumour can be different from one another.</dd>
+  <dt>Immunotherapy</dt>
+  <dd>A type of cancer treatment that helps the body's own immune system fight cancer.</dd>
+</dl>
+
+<h2>Want to learn more?</h2>
+<ul>
+  <li><a href="https://www.cancer.gov/about-cancer/understanding/what-is-cancer">What Is Cancer?</a> &ndash; a clear introduction from the US National Cancer Institute.</li>
+  <li><a href="https://www.genome.gov/genetics-glossary/Gene-Expression">Gene Expression</a> and <a href="https://www.genome.gov/genetics-glossary/RNA-Ribonucleic-Acid">RNA</a> &ndash; short explainers from the National Human Genome Research Institute's Talking Glossary.</li>
+  <li><a href="https://humantumoratlas.org/">Human Tumor Atlas Network</a> &ndash; the NCI-funded project building detailed maps of human cancers.</li>
+  <li><a href="https://pubmed.ncbi.nlm.nih.gov/33408396/">Method of the Year 2020: spatially resolved transcriptomics</a> &ndash; the <em>Nature Methods</em> editorial (a little more technical).</li>
+  <li><a href="https://en.wikipedia.org/wiki/Spatial_transcriptomics">Spatial transcriptomics on Wikipedia</a> &ndash; a more detailed overview of the history and techniques.</li>
+</ul>
+
+</main>
+</body>
+</html>
